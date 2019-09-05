@@ -2,7 +2,6 @@
 
     $("#btnPlay").on("click", function () {
         location.pathname.trim();
-        debugger;
         model = {};
         model.CorrectedLetters = $("#lblCorrectedLetters").text();
         model.TriedLetters = $("#lblTriedLetters").text();
@@ -16,8 +15,7 @@
             type: "POST",
             data: { model: model },
             success: function (result) {
-                debugger;//result = {word: "ENGAGEMENT", shot: "K", correctedLetters: "XXXXXXXXXX", errorsQuantity: 1, triedLetters: "K", …}
-
+                
                 $("#lblCorrectedLetters").text(result.correctedLetters);
                 $("#lblTriedLetters").text(result.triedLetters);
                 $("#txtShot").val("");
@@ -36,7 +34,7 @@
                 
             },
             error: function (error) {
-                alert("erro:"+error);
+                
             }
         });
     });

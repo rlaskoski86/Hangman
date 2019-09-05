@@ -20,7 +20,7 @@ namespace Hangman.Business
         }
         public PlayStatus Play(PlayStatus play)
         {
-            play.TriedLetters += " "+play.Shot;
+            play.TriedLetters += " "+play.Shot.ToUpper();
             if (!play.Word.ToUpper().Contains(play.Shot.ToUpper()))
             {
                 play.ErrorsQuantity++;
