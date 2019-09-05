@@ -1,0 +1,55 @@
+﻿@model Hangman.Model.PlayStatus
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <img id="imgHang" src="~/images/gallows.jpg" style="width: 350px; margin-bottom: 20px; margin-top: 10px;">
+</div>
+
+<div class="row">
+    <input type="hidden" id="hdnWord" asp-for="Word" />
+    <div class="col-md-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label class="control-label">Word:</label> <label id="lblCorrectedLetters">@Model.CorrectedLetters</label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Letters: </label><label id="lblTriedLetters"> @Model.TriedLetters</label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ErrorsQuantity" class="control-label">Errors:</label><label id="lblErrorsQuantity"> @Model.ErrorsQuantity</label>
+            <input asp-for="ErrorsQuantity" type="hidden" id="hdnErrors" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Shot" class="control-label">Shot:</label>
+            <input asp-for="Shot" class="form-control" id="txtShot" />
+            <span asp-validation-for="Shot" class="text-danger"></span>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="submit" id="btnPlay" value="Play" class="btn btn-primary" />
+            <a asp-action="Index" asp-controller="Game" class="btn btn-default">New Game</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h1>
+            <label id="lblGameOver"></label>
+        </h1>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="~/js/Views/Game/Index.js"></script>
